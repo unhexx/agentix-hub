@@ -25,6 +25,8 @@ INTENTS = {
     "knowledge": [],
     "compress": ["common/memory.md"],
     "harvest": ["common/experience.md"],
+    "tracker": [],
+    "slack": [],
 }
 
 # Skills живут в корне репозитория, не в tools/blocks.
@@ -33,6 +35,11 @@ SKILL_INTENTS = {
     "knowledge": ["skills/local-knowledge-ingestion/SKILL.md"],
     "compress": ["skills/README.md"],
     "harvest": ["skills/experience-accumulation/SKILL.md"],
+    "tracker": [
+        "skills/mcp-linear/SKILL.md",
+        "skills/mcp-jira/SKILL.md",
+    ],
+    "slack": ["skills/mcp-slack/SKILL.md"],
 }
 
 

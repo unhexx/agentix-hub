@@ -4,7 +4,7 @@
 Load only what you need via:
 
 ```bash
-python tools/select.py --intent git|test|memory|docker|state|handoff|bootstrap
+python tools/select.py --intent git|test|memory|docker|state|handoff|bootstrap|tracker|slack
 ```
 
 Host agent tools (`read_file`, `search_replace`, `run_terminal_command`, `grep`, MCP, …) use **exact schemas from the host environment** — do not guess parameter names.
@@ -20,6 +20,8 @@ Host agent tools (`read_file`, `search_replace`, `run_terminal_command`, `grep`,
 | `test` | Tester role | venv + pytest |
 | `docker` | Compose-based projects | compose basics |
 | `handoff` | Every role exit | validate_handoff rules |
+| `tracker` | Opt-in Linear/Jira cycle sync | `skills/mcp-linear`, `skills/mcp-jira` (never implied by `git`) |
+| `slack` | Opt-in Reviewer Slack notify | `skills/mcp-slack` |
 
 ## Rules
 

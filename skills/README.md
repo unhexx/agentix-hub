@@ -11,6 +11,9 @@ First-class reusable skills for the agentic loop. Skills are progressive knowled
 | [reflective-improvement](reflective-improvement/SKILL.md) | 6-step reflection write-up (sub-skill of loop-self-improve) | After memory query, when a structured ritual is needed |
 | [local-knowledge-ingestion](local-knowledge-ingestion/SKILL.md) | Templates for crawlers, SQLite local knowledge store, sovereign mirroring of docs/code into structured memory | Orchestrator bootstrap; when external docs or multi-repo knowledge needed |
 | [git-commit-to-jira-tasks](git-commit-to-jira-tasks/SKILL.md) | Cluster git commits into INVEST Jira Stories/Tasks with Fibonacci Story Points (hours optional) | **Explicit user request only** or `Follow skills/git-commit-to-jira-tasks/SKILL.md`. Never `--intent git` |
+| [mcp-linear](mcp-linear/SKILL.md) | Cycle sync: TODO.md → Linear issues (create/update/close) | `integrations.issue_tracker.provider=linear` **and** `enabled: true`, or `Follow skills/mcp-linear/SKILL.md`. Never `--intent git` |
+| [mcp-jira](mcp-jira/SKILL.md) | Cycle sync: TODO.md → Jira issues (not git-commit clustering) | `provider=jira` **and** `enabled: true`, or explicit Follow. Never `--intent git` |
+| [mcp-slack](mcp-slack/SKILL.md) | Compact Slack summary on Reviewer DONE/BLOCKED | `integrations.slack.enabled` **and** (`enterprise_governance` or `force`). Never `--intent git` |
 
 ## Usage
 
@@ -20,6 +23,8 @@ python tools/select.py --intent reflect
 python tools/select.py --intent knowledge
 python tools/select.py --intent compress
 python tools/select.py --intent harvest
+python tools/select.py --intent tracker
+python tools/select.py --intent slack
 # or reference in handoff / prompt:
 # "Follow skills/experience-accumulation/SKILL.md then skills/loop-self-improve/SKILL.md"
 python -m memory.context_budget check --files .agent/PLAN.md --budget 12000 --compress
