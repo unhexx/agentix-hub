@@ -126,5 +126,27 @@
       "push": false,
       "lease_ttl_s": 7200
     }
+  },
+  "integrations": {
+    "issue_tracker": {
+      "provider": "linear",
+      "project_id": "AGX",
+      "enabled": false,
+      "base_url": null
+    },
+    "slack": {
+      "enabled": false,
+      "channel": "#agentix",
+      "webhook_url": null,
+      "force": false
+    }
+  },
+  "tier": {
+    "level": "free",
+    "feature_flags": {
+      "hub_premium": false,
+      "eval_harness": false,
+      "enterprise_governance": false
+    }
   }
 }
