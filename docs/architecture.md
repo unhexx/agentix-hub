@@ -27,7 +27,7 @@ Each role: **PLAN → ACT (≤3 tool calls) → REFLECT → handoff JSON**.
 
 | Layer | Location | Purpose |
 |-------|----------|---------|
-| Packaging | `pyproject.toml` | Dist name `agentix`, import `memory`. `pip install -e ".[dev]"` / `.[dashboard]` / `.[tokens]`. `.[dev]` includes tiktoken. Console scripts `agentix`, `agentix-supervisor`, `agentix-dashboard`, `agentix-proxy` |
+| Packaging | `pyproject.toml` | Dist name `agentix`, import `memory`. `pip install -e ".[dev]"` / `.[dashboard]` / `.[tokens]` / `.[mcp]`. `.[dev]` includes tiktoken. Console scripts `agentix`, `agentix-supervisor`, `agentix-dashboard`, `agentix-proxy` |
 | Context budget | `memory/context_budget.py` | tiktoken extra (`dev`/`tokens`); fallback chars/4; per-model encoding; supervisor caps from `context_budget` (`prompt_body_chars`, `snap_json_chars`, `knowledge_budget_tokens`, `prompt_token_cap`) |
 | Roles & prompts | `AGENT_ROLES.md`, `prompts/` | Per-role discipline |
 | Handoffs | `HANDOFF_SCHEMA.md` | State transfer contract |
@@ -36,6 +36,7 @@ Each role: **PLAN → ACT (≤3 tool calls) → REFLECT → handoff JSON**.
 | Playbooks | `.agent/PLAYBOOKS.json` | Knowledge bullets (ACE scoring; optional embeddings when `playbooks.relevance=embed`) |
 | Hub | `.agent/HUB_INDEX.json` | Exportable discovery index |
 | Audit | `memory/audit_log.py` | Enterprise trail (P5) |
+| MCP integrations | `memory/integrations/` | Opt-in Linear/Jira TODO sync + Slack notify; default `enabled: false` |
 | Resume | `memory/resume.py` | Crash recovery (P7) |
 | Request proxy | `memory/proxy/` | Loopback `:8110` gateway → host pxpipe `:8100` ([docs/proxy.md](proxy.md)) |
 | Control Plane | `memory.dashboard` | operator HTMX UI, not the runner |

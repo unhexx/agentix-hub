@@ -2,6 +2,24 @@
 
 ## [Unreleased]
 
+## [3.13.0] - 2026-08-27
+
+### Added
+- Full MCP skills for Linear, Jira, and Slack: `skills/mcp-linear`, `skills/mcp-jira`, `skills/mcp-slack` (`disable-model-invocation: true`; never `--intent git`).
+- Runtime `memory/integrations/`: shared `IssueTracker` protocol, Linear GraphQL, Jira REST v3/v2, Slack webhook/Web API, stdlib urllib. CLI `python -m memory.integrations {sync,close,notify,status}`.
+- Opt-in supervisor hooks on Orchestrator cycle start and Reviewer `DONE`/`BLOCKED` (fail-open). Default `integrations.*.enabled: false`.
+- Slack gate: `integrations.slack.enabled` AND (`tier.feature_flags.enterprise_governance` OR `integrations.slack.force`).
+- Empty extras `mcp` / `linear` / `jira` / `slack`. Tests in `memory/test_integrations.py` (hermetic urllib mocks).
+- Design spec: [`docs/superpowers/specs/2026-08-27-mcp-linear-jira-slack-design.md`](docs/superpowers/specs/2026-08-27-mcp-linear-jira-slack-design.md)
+
+### Changed
+- `VERSION` → 3.13.0
+- ROADMAP: Future bullet “Full MCP skills for Linear/Jira/Slack” removed; milestone v3.13.0
+- `docs/integrations.md` is the shipped contract (no longer a stub)
+- `git-commit-to-jira-tasks` contract unchanged (commit clustering; not cycle sync)
+
+Minor, not a 3.12.x patch: new product surface in `agentix-hub`. Stdlib install still works. Default config stays off.
+
 ## [3.12.0] - 2026-08-27
 
 ### Added

@@ -1,10 +1,10 @@
 # Agentix Public Roadmap
 
-[![Version](https://img.shields.io/badge/version-3.12.0-blue?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-3.13.0-blue?style=flat-square)](CHANGELOG.md)
 [![Main README](https://img.shields.io/badge/Main-README-blue?style=flat-square)](README.md)
 [![Docs](https://img.shields.io/badge/docs-available-brightgreen?style=flat-square)](docs/README.md)
 
-**Status Date:** 2026-08-27 · **Initiative:** Business Efficiency — **COMPLETE** · **v3.9 Harness Hardening** — **COMPLETE** · **v3.10 Concurrent fan-out** — **COMPLETE** · **v3.10.1 supervisor caps** — **COMPLETE** · **v3.11 Conflict-free parallel sessions** — **COMPLETE** · **v3.11 NG11 harvester DI** — **COMPLETE** · **v3.11.2 Path 1 docs i18n** — **COMPLETE** · **v3.11.3 MultiLLM extract** — **COMPLETE** · **v3.11.4 P8-12 module split** — **COMPLETE** · **v3.12.0 P8-10 playbook embeddings** — **COMPLETE** · **Next:** Future
+**Status Date:** 2026-08-27 · **Initiative:** Business Efficiency — **COMPLETE** · **v3.9 Harness Hardening** — **COMPLETE** · **v3.10 Concurrent fan-out** — **COMPLETE** · **v3.10.1 supervisor caps** — **COMPLETE** · **v3.11 Conflict-free parallel sessions** — **COMPLETE** · **v3.11 NG11 harvester DI** — **COMPLETE** · **v3.11.2 Path 1 docs i18n** — **COMPLETE** · **v3.11.3 MultiLLM extract** — **COMPLETE** · **v3.11.4 P8-12 module split** — **COMPLETE** · **v3.12.0 P8-10 playbook embeddings** — **COMPLETE** · **v3.13.0 MCP Linear/Jira/Slack** — **COMPLETE** · **Next:** Future
 
 ---
 
@@ -50,7 +50,6 @@ Leftover nice-to-haves (docs i18n, embeddings, …) moved to Future.
 ## Future
 
 - Hosted Agentix Hub SaaS (optional)
-- Full MCP skills for Linear/Jira/Slack
 - Operator Messenger (Telegram/MAX)
 - Mobile / non-MCP major rewrites (out of scope)
 
@@ -60,6 +59,7 @@ Leftover nice-to-haves (docs i18n, embeddings, …) moved to Future.
 
 | Version | Highlight |
 |---------|-----------|
+| **v3.13.0** | Full MCP skills: Linear + Jira cycle sync, Slack notify; opt-in, stdlib urllib |
 | **v3.12.0** | P8-10: optional embeddings extra; hybrid 0.2 cosine; fail-open substring |
 | **v3.11.4** | P8-12: thin loaders + `memory/meta/` + `memory/experience/` + Init.ps1 dotsource |
 | **v3.11.3** | P8-13: MultiLLM ontology extracted to `memory/llm_ontology.py` |

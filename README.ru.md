@@ -1,6 +1,6 @@
 # Agentix
 
-[![Version](https://img.shields.io/badge/version-3.12.0-blue?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-3.13.0-blue?style=flat-square)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](docs/ru/getting-started.md)
 [![Platform](https://img.shields.io/badge/platform-Linux_%7C_macOS_%7C_Windows-lightgrey?style=flat-square)](docs/cross-platform.md)
@@ -369,7 +369,7 @@ v1 **не** слушает IP tailnet. TeleGrok 0.1.0 не поставляет 
 | Категория | Возможность |
 |-----------|-------------|
 | **Дисциплина цикла** | 5 ролей, JSON-handoff, INVEST-задачи, git §11 sync |
-| **Упаковка** | `pip install -e ".[dev]"` / `.[dashboard]`; console script `agentix`; пакет импорта `memory` |
+| **Упаковка** | `pip install -e ".[dev]"` / `.[dashboard]` / `.[mcp]`; console script `agentix`; пакет импорта `memory` |
 | **Control Plane** | Loopback HTMX UI оператора (`memory.dashboard` на `:8112`), не раннер |
 | **Самоулучшение** | Playbook (ACE scoring), meta-harvester, performance ledger, [skills](skills/README.md) (English) |
 | **Контекст** | Ограниченный LOOP_STATE, гейт `context_budget` (лимиты супервизора из config/env), компрессор по правилам, локальный SQLite knowledge, [прокси запросов](docs/proxy.md) (English) (**pxpipe по умолчанию** + шлюз Agentix) |
@@ -380,7 +380,7 @@ v1 **не** слушает IP tailnet. TeleGrok 0.1.0 не поставляет 
 | **Продуктизация** | сайт `docs/`, consumer-starter, Agentix Hub |
 | **Enterprise** | Audit log, образцы policy, триггер GitHub Actions |
 | **DX** | Мастер онбординга, stack-шаблоны, рекомендации расширений VS Code |
-| **MCP** | Расширяемый реестр инструментов для shell, GUI, vision, fleet, интеграций |
+| **MCP** | Opt-in синхронизация Linear/Jira и Slack ([docs/integrations.md](docs/integrations.md)); GitHub через `grok_com_github` |
 
 ---
 
@@ -463,4 +463,4 @@ Dogfood на этом репозитории за **50+ циклов** (Business
 
 ## Лицензия
 
-[MIT](LICENSE) · **Agentix 3.12.0** · Поддерживается **exception.expert**
+[MIT](LICENSE) · **Agentix 3.13.0** · Поддерживается **exception.expert**

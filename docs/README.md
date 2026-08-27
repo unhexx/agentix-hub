@@ -2,7 +2,7 @@
 
 **Language:** [English](README.md) · [Русский](ru/README.md)
 
-[![Version](https://img.shields.io/badge/version-3.12.0-blue?style=flat-square)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-3.13.0-blue?style=flat-square)](../CHANGELOG.md)
 [![Main README](https://img.shields.io/badge/Main-README-blue?style=flat-square)](../README.md)
 
 Canonical documentation for the Agentix agentic development loop template.
