@@ -382,6 +382,38 @@ def _is_terminal_result(nxt: Next) -> bool:
     return isinstance(nxt, Terminal)
 
 
+def _maybe_on_cycle_start(workdir: Path) -> None:
+    """Opt-in Linear/Jira upsert. Ошибка не валит цикл."""
+    try:
+        from memory.integrations.hooks import on_cycle_start
+
+        on_cycle_start(workdir)
+    except Exception as exc:
+        log.warning("integrations on_cycle_start failed: %s", exc)
+
+
+def _maybe_on_reviewer_done(
+    workdir: Path, handoff: Optional[Dict[str, Any]]
+) -> None:
+    try:
+        from memory.integrations.hooks import on_reviewer_done
+
+        on_reviewer_done(workdir, handoff)
+    except Exception as exc:
+        log.warning("integrations on_reviewer_done failed: %s", exc)
+
+
+def _maybe_on_reviewer_blocked(
+    workdir: Path, handoff: Optional[Dict[str, Any]]
+) -> None:
+    try:
+        from memory.integrations.hooks import on_reviewer_blocked
+
+        on_reviewer_blocked(workdir, handoff)
+    except Exception as exc:
+        log.warning("integrations on_reviewer_blocked failed: %s", exc)
+
+
 def _should_start_new_cycle(
     st: Dict[str, Any], handoff: Optional[Dict[str, Any]]
 ) -> bool:
@@ -474,6 +506,9 @@ def run_loop(
             st["status"] = "IN_PROGRESS"
             st["cycle_number"] = int(st.get("cycle_number") or 0) + 1
             state_mod.save_state(st, agent_dir=agent)
+
+        if role == "Orchestrator":
+            _maybe_on_cycle_start(workdir)
 
         turns = 0
         pr_ready_count = 0
@@ -571,6 +606,7 @@ def run_loop(
                         "notes": f"policy tags {tags}",
                     }
                 )
+                _maybe_on_reviewer_blocked(workdir, handoff)
                 return {
                     "terminal": Terminal.BLOCKED,
                     "exit_code": 1,
@@ -594,6 +630,7 @@ def run_loop(
             if _is_terminal_result(nxt):
                 term: Terminal = nxt  # type: ignore[assignment]
                 if term == Terminal.PR_READY:
+                    _maybe_on_reviewer_done(workdir, handoff)
                     try:
                         from memory.experience_harvester import maybe_cycle_on_done
 
@@ -623,8 +660,11 @@ def run_loop(
                             "cycle_number": int(cur.get("cycle_number") or 0) + 1,
                         }
                     )
+                    _maybe_on_cycle_start(workdir)
                     continue
 
+                if term == Terminal.BLOCKED:
+                    _maybe_on_reviewer_blocked(workdir, handoff)
                 _save({"status": term.value, "active_role": role})
                 return {
                     "terminal": term,
